@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My AI Agent</title>
+  <link rel="stylesheet" href="/frontend/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">AI</span>
+        <div>
+          <h1>MY AI AGENT</h1>
+          <p>Telefon üzerinden güvenli PC kontrolü</p>
+        </div>
+      </div>
+      <div class="panel login-panel" id="loginPanel">
+        <h2>Giriş</h2>
+        <p>Panel token'ını gir ve güvenli oturum oluştur.</p>
+        <form id="loginForm" class="stacked-form">
+          <label>
+            <span>Panel token</span>
+            <input type="password" id="accessToken" placeholder="FRONTEND_ACCESS_TOKEN" autocomplete="current-password" />
+          </label>
+          <button type="submit" class="primary">Giriş Yap</button>
+        </form>
+      </div>
+      <div class="panel status-panel">
+        <div class="row">
+          <span id="connectionDot" class="dot offline"></span>
+          <div>
+            <strong id="connectionText">Bağlantı yok</strong>
+            <p id="agentText">Agent bekleniyor</p>
+          </div>
+        </div>
+        <button id="themeToggle" class="secondary">Dark Mode</button>
+      </div>
+      <div class="panel approvals-panel">
+        <h2>Onay Bekleyenler</h2>
+        <div id="approvalsList" class="approval-list"></div>
+      </div>
+    </aside>
+
+    <main class="chat-area">
+      <header class="chat-header">
+        <div>
+          <h2>Komut Paneli</h2>
+          <p>Canlı websocket, görev geçmişi ve durum akışı.</p>
+        </div>
+        <div class="header-stats">
+          <span id="statusBadge" class="badge">Hazır</span>
+          <span id="sessionBadge" class="badge ghost">Oturum yok</span>
+        </div>
+      </header>
+
+      <section id="messages" class="messages"></section>
+
+      <section class="composer">
+        <div class="input-wrap">
+          <textarea id="commandInput" rows="2" placeholder="Komut yaz... örn: Masaüstündeki Proje1 klasörünü bul ve README dosyasını oku."></textarea>
+        </div>
+        <button id="sendButton" class="primary send-button">Gönder</button>
+      </section>
+
+      <section class="history">
+        <div class="section-head">
+          <h3>İşlem Geçmişi</h3>
+          <span id="workingState">Hazır</span>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="busyBanner" class="busy-banner hidden">Çalışıyor...</div>
+  <script src="/frontend/app.js"></script>
+</body>
+</html>
